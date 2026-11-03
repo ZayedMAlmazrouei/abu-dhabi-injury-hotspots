@@ -1,12 +1,12 @@
 {
 "ui": {
 "title": {
-"en": "Where injury accidents happen in Abu Dhabi Emirate",
-"ar": "أين تقع حوادث الإصابات في إمارة أبوظبي"
+"en": "Injury accidents on Abu Dhabi roads, 2022–2025",
+"ar": "حوادث الإصابات على طرق أبوظبي 2022–2025"
 },
 "lede": {
-"en": "Police-reported accidents with injuries, 2022 to 2025, placed on the official road network. Each coloured road is an Abu Dhabi Police street label matched to the official road in the same city in the Spatial Data Infrastructure, including descriptive labels such as the truck road, the Tarif to Liwa road or the Al Ain to Dubai road mapped to their route numbers. Pick a year, or compare two.",
-"ar": "حوادث الإصابات المسجلة لدى شرطة أبوظبي من 2022 إلى 2025، موضوعة على شبكة الطرق الرسمية. كل طريق ملوّن هو اسم شارع في سجلات الشرطة تمت مطابقته مع الطريق الرسمي في المدينة نفسها ضمن البنية التحتية للبيانات المكانية، بما في ذلك الأسماء الوصفية مثل طريق الشاحنات وطريق طريف–ليوا وطريق العين–دبي التي رُبطت بأرقام مساراتها. اختر سنة، أو قارن بين سنتين."
+"en": "Built from the Abu Dhabi Police accident reports published on data.abudhabi. I matched the street names in the police files to the official road network so each accident sits on a real road. Pick a year, or compare two years.",
+"ar": "مبني على تقارير حوادث شرطة أبوظبي المنشورة في data.abudhabi. طابقت أسماء الشوارع في ملفات الشرطة مع شبكة الطرق الرسمية حتى يظهر كل حادث على طريق حقيقي. اختر سنة أو قارن بين سنتين."
 },
 "language": {
 "en": "Language",
@@ -33,36 +33,36 @@
 "ar": "2022 إلى 2025"
 },
 "modeAll": {
-"en": "Totals for 2022 to 2025.",
-"ar": "الإجمالي من 2022 إلى 2025."
+"en": "All four years together.",
+"ar": "السنوات الأربع معاً."
 },
 "modeYear": {
-"en": "{y} only. Choose a second year to see what changed.",
-"ar": "سنة {y} فقط. اختر سنة ثانية لمعرفة ما تغيّر."
+"en": "{y} only. Pick another year to compare.",
+"ar": "سنة {y} فقط. اختر سنة أخرى للمقارنة."
 },
 "modeCmp": {
-"en": "Change from {a} to {b}. Colour is direction, width is size of change.",
-"ar": "التغيّر من {a} إلى {b}. اللون يدل على الاتجاه، وسماكة الخط على حجم التغيّر."
+"en": "{a} to {b}. Red means more, green means fewer, thicker means a bigger change.",
+"ar": "من {a} إلى {b}. الأحمر زيادة، الأخضر انخفاض، والخط الأسمك تغيّر أكبر."
 },
 "kAll": {
 "en": "injury accidents in the police files",
 "ar": "حادث إصابة في ملفات الشرطة"
 },
 "kMapped": {
-"en": "placed on a named road ({p}%)",
-"ar": "موضوع على طريق مسمّى ({p}٪)"
+"en": "of them on a road I could match ({p}%)",
+"ar": "منها على طريق تمكنت من مطابقته ({p}٪)"
 },
 "kRoads": {
-"en": "roads with at least one",
-"ar": "طريقاً بحادث واحد على الأقل"
+"en": "roads on the map",
+"ar": "طريقاً على الخريطة"
 },
 "kInjured": {
 "en": "people injured on mapped roads",
 "ar": "مصاباً على الطرق الموضوعة على الخريطة"
 },
 "kFreeway": {
-"en": "of mapped accidents were on freeways",
-"ar": "من الحوادث الموضوعة وقعت على الطرق السريعة"
+"en": "of those were on freeways",
+"ar": "منها على الطرق السريعة"
 },
 "kCmpAcc": {
 "en": "injury accidents in {b}, against {a}",
@@ -105,8 +105,8 @@
 "ar": "{n} فأكثر"
 },
 "legWidth": {
-"en": "Thicker lines: more people hurt per crash",
-"ar": "الخطوط الأسمك: إصابات أكثر في الحادث الواحد"
+"en": "Thicker line = more people hurt per crash",
+"ar": "الخط الأسمك = إصابات أكثر في كل حادث"
 },
 "legMore": {
 "en": "More in {b} than {a}",
@@ -121,8 +121,8 @@
 "ar": "بدون تغيّر"
 },
 "hint": {
-"en": "Scroll or pinch to zoom, drag to pan, hover a road for details",
-"ar": "التمرير أو القرص للتكبير، السحب للتحريك، مرّر المؤشر فوق طريق للتفاصيل"
+"en": "Scroll to zoom, drag to move, hover a road",
+"ar": "مرّر للتكبير، اسحب للتحريك، مرّر المؤشر فوق طريق"
 },
 "kmh": {
 "en": "km/h",
@@ -141,8 +141,8 @@
 "ar": "أسماء الشرطة"
 },
 "extended": {
-"en": "Line continues through {r}; the police file all of it under {p}",
-"ar": "الخط يمتد عبر {r}؛ الشرطة تسجّله كله تحت {p}"
+"en": "Continues into {r}; the police count all of it under {p}",
+"ar": "يمتد إلى {r}؛ الشرطة تحسبه كله ضمن {p}"
 },
 "tipAcc": {
 "en": "{a} injury accidents, {i} people injured",
@@ -213,36 +213,36 @@
 "ar": "الطرق حسب التغيّر من {a} إلى {b}"
 },
 "tblNote": {
-"en": "Sort by any column. \"2+ hurt\" is the share of accidents with two or more people injured. Per-kilometre rates are shown only for roads longer than 5 km.",
-"ar": "رتّب حسب أي عمود. «إصابتان فأكثر» هي نسبة الحوادث التي أُصيب فيها شخصان أو أكثر. معدل الكيلومتر يُعرض فقط للطرق الأطول من 5 كم."
+"en": "Click a column to sort. \"2+ hurt\" = share of accidents where two or more people were injured. Per-km only for roads over 5 km.",
+"ar": "اضغط على عمود للترتيب. «إصابتان فأكثر» = نسبة الحوادث التي أُصيب فيها شخصان أو أكثر. معدل الكيلومتر فقط للطرق الأطول من 5 كم."
 },
 "tblNoteCmp": {
-"en": "Change in injury accidents between the two years. Small roads swing a lot year to year, so read the big movers.",
-"ar": "التغيّر في حوادث الإصابات بين السنتين. الطرق الصغيرة تتقلّب كثيراً من سنة لأخرى، فركّز على التغيّرات الكبيرة."
+"en": "Small roads jump around from year to year. Look at the big ones.",
+"ar": "الطرق الصغيرة تتقلب من سنة لأخرى. انظر إلى الطرق الكبيرة."
 },
 "yoyTitle": {
 "en": "Year over year, whole emirate",
 "ar": "سنة بعد سنة، الإمارة كلها"
 },
 "yoyNote": {
-"en": "Every injury accident in the police files, whether or not its street could be mapped.",
-"ar": "كل حوادث الإصابات في ملفات الشرطة، سواء أمكن وضع شارعها على الخريطة أم لا."
+"en": "All injury accidents, including the ones I couldn't put on a road.",
+"ar": "كل حوادث الإصابات، بما فيها التي لم أتمكن من وضعها على طريق."
 },
 "clsTitle": {
 "en": "Faster roads, more people hurt per crash",
-"ar": "طرق أسرع، إصابات أكثر في الحادث الواحد"
+"ar": "طرق أسرع، إصابات أكثر في كل حادث"
 },
 "clsNote": {
-"en": "Share of injury accidents with two or more people injured, by road class. Matched roads, all years, classes with at least 40 accidents.",
-"ar": "نسبة حوادث الإصابات بشخصين أو أكثر حسب فئة الطريق. الطرق المطابقة، كل السنوات، الفئات التي فيها 40 حادثاً على الأقل."
+"en": "Share of accidents with 2+ injured, by road type. Only types with 40+ accidents.",
+"ar": "نسبة الحوادث بإصابتين فأكثر حسب نوع الطريق. فقط الأنواع التي فيها 40 حادثاً فأكثر."
 },
 "fcTitle": {
-"en": "Daily forecast for Abu Dhabi city, 2025",
-"ar": "التوقع اليومي لمدينة أبوظبي، 2025"
+"en": "Daily forecast, Abu Dhabi city, 2025",
+"ar": "التوقع اليومي، مدينة أبوظبي، 2025"
 },
 "fcNote": {
-"en": "All accident types. A gradient-boosting model trained on 2022 to 2024 using recent counts, weekday, Ramadan, public holidays and daily weather (Open-Meteo archive). Average error 42 a day (8%), against 55 for simply repeating last week; on rainy days the weather cut the error from 19 to 12.",
-"ar": "كل أنواع الحوادث. نموذج تعزيز متدرج مدرَّب على 2022–2024 باستخدام الأعداد الأخيرة ويوم الأسبوع ورمضان والعطل الرسمية والطقس اليومي (أرشيف Open-Meteo). متوسط الخطأ 42 حادثاً يومياً (8٪) مقابل 55 عند تكرار الأسبوع الماضي؛ وفي الأيام الممطرة خفّض الطقس الخطأ من 19 إلى 12."
+"en": "All accident types. LightGBM trained on 2022–2024 with recent counts, weekday, Ramadan, holidays and daily weather from Open-Meteo. Off by 42 a day on average (8%). Just repeating last week would be off by 55. On rainy days the weather data cut the error from 19 to 12.",
+"ar": "كل أنواع الحوادث. نموذج LightGBM مدرَّب على 2022–2024 بالأعداد الأخيرة ويوم الأسبوع ورمضان والعطل والطقس اليومي من Open-Meteo. الخطأ في المتوسط 42 حادثاً يومياً (8٪). تكرار الأسبوع الماضي يخطئ بـ55. في الأيام الممطرة خفّض الطقس الخطأ من 19 إلى 12."
 },
 "actual": {
 "en": "Actual",
@@ -257,16 +257,16 @@
 "ar": "يناير|مارس|مايو|يوليو|سبتمبر|نوفمبر"
 },
 "unmTitle": {
-"en": "What the map leaves out",
-"ar": "ما لا تُظهره الخريطة"
+"en": "What I couldn't put on the map",
+"ar": "ما لم أتمكن من وضعه على الخريطة"
 },
 "unm1": {
-"en": "{n} injury accidents ({p}%) carry a street label that does not match an official road name in the same city. The largest groups:",
-"ar": "{n} حادث إصابة ({p}٪) يحمل اسم شارع لا يطابق اسم طريق رسمي في المدينة نفسها. أكبر المجموعات:"
+"en": "{n} injury accidents ({p}%) have a street name that doesn't match any official road in that city. The biggest groups:",
+"ar": "{n} حادث إصابة ({p}٪) باسم شارع لا يطابق أي طريق رسمي في تلك المدينة. أكبر المجموعات:"
 },
 "unm2": {
-"en": "Interior streets, \"undefined\", checkpoints and intersection codes need coordinates the police files do not publish. Mussafah Road and the airport roads have no equivalent in the official register, so they are held back rather than drawn in the wrong place. Country and emirate boundaries are from geoBoundaries; roads are from AD-SDI.",
-"ar": "الشوارع الداخلية و«لا يوجد تعريف» ونقاط التفتيش ورموز التقاطعات تحتاج إحداثيات لا تنشرها ملفات الشرطة. طريق المصفح وطرق المطار لا مقابل لها في السجل الرسمي، فتُركت بدل رسمها في مكان خاطئ. حدود الدولة والإمارات من geoBoundaries، والطرق من البنية التحتية للبيانات المكانية لأبوظبي."
+"en": "\"Interior street\", \"undefined\", checkpoints and intersection codes would need coordinates, and the police files don't have them. Mussafah Road and the airport roads don't exist under those names in the official register, so I left them out instead of guessing. Borders are from geoBoundaries, roads from AD-SDI.",
+"ar": "«شارع داخلي» و«لا يوجد تعريف» ونقاط التفتيش ورموز التقاطعات تحتاج إحداثيات، وملفات الشرطة لا تحتوي عليها. طريق المصفح وطرق المطار لا توجد بهذه الأسماء في السجل الرسمي، فتركتها بدل التخمين. الحدود من geoBoundaries والطرق من AD-SDI."
 },
 "modeCount": {
 "en": "Counts",
@@ -277,56 +277,56 @@
 "ar": "مقابل الاتجاه"
 },
 "mapResid": {
-"en": "2025 against what the emirate-wide trend predicted for each road",
-"ar": "2025 مقارنة بما توقعه اتجاه الإمارة لكل طريق"
+"en": "2025 compared with what each road's own trend predicted",
+"ar": "2025 مقارنة بما توقعه اتجاه كل طريق"
 },
 "legWorse": {
-"en": "Worse than trend (+15% or more)",
-"ar": "أسوأ من الاتجاه (+15٪ فأكثر)"
+"en": "Worse than its trend (15%+)",
+"ar": "أسوأ من اتجاهه (15٪+)"
 },
 "legBetter": {
-"en": "Better than trend (−15% or more)",
-"ar": "أفضل من الاتجاه (−15٪ فأكثر)"
+"en": "Better than its trend (15%+)",
+"ar": "أفضل من اتجاهه (15٪+)"
 },
 "legOnTrend": {
-"en": "On trend or too few to judge",
-"ar": "على الاتجاه أو أقل من أن يُحكم عليه"
+"en": "About on trend, or too few to tell",
+"ar": "قريب من الاتجاه، أو قليل جداً للحكم"
 },
 "legArea": {
 "en": "District label, not a road",
 "ar": "اسم منطقة، ليس طريقاً"
 },
 "areaNote": {
-"en": "Police label names a district, not a road; drawn as a marker",
-"ar": "اسم المنطقة في سجل الشرطة وليس طريقاً؛ مرسوم كعلامة"
+"en": "The police wrote a district here, not a road, so it's a circle",
+"ar": "الشرطة كتبت اسم منطقة هنا وليس طريقاً، لذلك رُسمت دائرة"
 },
 "residTip": {
-"en": "2025: {y} against {e} expected from the 2022–24 trend ({p}%)",
-"ar": "2025: {y} مقابل {e} متوقعة من اتجاه 2022–2024 ({p}٪)"
+"en": "2025: {y}, expected about {e} from 2022–24 ({p}%)",
+"ar": "2025: {y}، المتوقع نحو {e} من 2022–2024 ({p}٪)"
 },
 "wcTitle": {
-"en": "What changed, 2022 to 2025",
-"ar": "ما الذي تغيّر من 2022 إلى 2025"
+"en": "What changed between 2022 and 2025",
+"ar": "ما الذي تغيّر بين 2022 و2025"
 },
 "wcNote": {
-"en": "Injury accidents across all police records, by what the officer recorded as the cause and the collision type. Totals rose 35%; the causes did not rise evenly, and that is where the signal is.",
-"ar": "حوادث الإصابات في كل سجلات الشرطة حسب السبب ونوع التصادم كما سجّله الضابط. الإجمالي ارتفع 35٪، لكن الأسباب لم ترتفع بالتساوي، وهنا تكمن الإشارة."
+"en": "Injury accidents by the cause and collision type the officer recorded. The total went up 35%, but some causes went up a lot more than others.",
+"ar": "حوادث الإصابات حسب السبب ونوع التصادم كما سجّله الضابط. الإجمالي ارتفع 35٪، لكن بعض الأسباب ارتفعت أكثر بكثير من غيرها."
 },
 "wcCauses": {
-"en": "Causes, biggest increases first",
-"ar": "الأسباب، الأكثر زيادة أولاً"
+"en": "Causes, biggest rise first",
+"ar": "الأسباب، الأكثر ارتفاعاً أولاً"
 },
 "wcTypes": {
 "en": "Collision types",
 "ar": "أنواع التصادم"
 },
 "wcRed": {
-"en": "Where red-light running grew",
-"ar": "أين زاد تجاوز الإشارة الحمراء"
+"en": "Where red-light running went up",
+"ar": "أين ارتفع تجاوز الإشارة الحمراء"
 },
 "wcRedNote": {
-"en": "Injury accidents with a red light or red arrow recorded as the cause, by matched road. Three times as many emirate-wide; these junction roads carry most of it.",
-"ar": "حوادث الإصابات التي سُجّل سببها تجاوز الإشارة الحمراء أو سهمها، حسب الطريق المطابق. تضاعفت ثلاث مرات على مستوى الإمارة، وهذه الطرق تحمل معظمها."
+"en": "Accidents where the cause was a red light or red arrow, by road. Three times as many across the emirate; most of it is on these junction roads.",
+"ar": "الحوادث التي سببها تجاوز الإشارة الحمراء أو السهم الأحمر، حسب الطريق. ثلاثة أضعاف على مستوى الإمارة، ومعظمها على هذه الطرق."
 },
 "wcLabel": {
 "en": "Trend 2022→25",
@@ -341,8 +341,8 @@
 "ar": "البيانات والمصادر"
 },
 "credNote": {
-"en": "Analysis, matching and modelling by Zayed Almazrouei. Cause labels are the attending officer's record; road matching is by name within the same city plus route-number aliases, so coverage is partial and stated on the page. Source code and data pipeline: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots.",
-"ar": "التحليل والمطابقة والنمذجة: زايد المزروعي. تصنيف الأسباب كما سجّله الضابط؛ ومطابقة الطرق تتم بالاسم ضمن المدينة نفسها مع أسماء بديلة بأرقام المسارات، لذا التغطية جزئية ومذكورة في الصفحة. الشيفرة المصدرية وخط معالجة البيانات: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots."
+"en": "Made by Zayed Almazrouei. The cause of each accident is whatever the officer wrote down. Road matching is by name within the same city, plus a list of aliases for roads the police call by a different name, so about a third of accidents are not on the map. Code and data: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots",
+"ar": "من إعداد زايد المزروعي. سبب كل حادث هو ما كتبه الضابط. مطابقة الطرق بالاسم ضمن المدينة نفسها، مع قائمة أسماء بديلة للطرق التي تسميها الشرطة باسم مختلف، لذلك نحو ثلث الحوادث غير موجود على الخريطة. الشيفرة والبيانات: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots"
 }
 },
 "regions": {

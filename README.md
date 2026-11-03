@@ -1,17 +1,19 @@
 # Abu Dhabi Injury Hotspots
 
-Where injury accidents happen in Abu Dhabi Emirate, built from open government data:
-Abu Dhabi Police accident reports (2022–2025) joined to the official road network, with a
-daily-count forecast, a severity model, a year-over-year cause analysis and a bilingual
-(English / Arabic) interactive map.
+Abu Dhabi Police publish their accident reports on data.abudhabi. I took the 2022–2025 files,
+matched the street names to the official road network, and put the injury accidents on a map.
+There is also a daily forecast, a severity model, a cause-by-year breakdown, and the page works
+in English and Arabic.
 
-## What it answers
+Live page: https://zayedmalmazrouei.github.io/abu-dhabi-injury-hotspots/
 
-- Which roads carry the most injury accidents, and how that changed year to year.
-- Which causes and collision types are growing (red-light running tripled 2022→2025;
-  right-angle collisions +128%).
-- Which roads did better or worse than the emirate-wide trend in 2025.
-- How many accidents to expect on a given day in Abu Dhabi city (MAE ≈ 42/day, 8%).
+## What you can see
+
+- Which roads have the most injury accidents and how that changed each year.
+- Which causes are rising. Red-light running tripled between 2022 and 2025, and right-angle
+  collisions went up 128%.
+- Which roads did better or worse in 2025 than their own trend.
+- A daily forecast for Abu Dhabi city, off by about 42 accidents a day (8%).
 
 ## Data sources
 
@@ -62,7 +64,7 @@ baseline; on rainy days weather cut the error from 19 to 12.
 
 **Injury severity** (2+ injured vs 1) — LightGBM on 5.8k record-level injury accidents.
 AUC 0.65–0.67. Road class, lanes and speed limit add nothing: what decides severity
-(vehicles, speeds, occupants) is not in the open files. Reported honestly rather than tuned.
+(vehicles, speeds, occupants) is not in the open files. I left it as is rather than tune it to look better.
 
 **What changed** — cause × year and collision type × year tables; red-light growth by road;
 per-road residuals (2025 actual vs the 2022–24 mean scaled by emirate growth, 1.26).
@@ -115,8 +117,8 @@ The SDI, boundary and weather pulls are one-off scripts run in a browser console
 - **UAE public holidays** — [u.ae](https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays).
 - Fonts: Hanken Grotesk and Readex Pro via Google Fonts (OFL).
 
-Analysis, matching and modelling by Zayed Almazrouei, 2026. Cause labels are the attending
-officer's record and are reproduced as published.
+Made by Zayed Almazrouei, 2026. The cause of each accident is whatever the officer wrote down;
+I kept it as published.
 
 ## Known limits
 
