@@ -106,6 +106,10 @@ html[lang=ar] svg text{font-family:var(--arabic)}
 .note ul{margin:6px 0 0;padding-inline-start:18px;columns:2;column-gap:18px}
 @media (max-width:560px){.note ul{columns:1}}
 .note li{break-inside:avoid}
+.credits{border-top:1px solid var(--rule);padding-top:18px;display:grid;gap:8px}
+.credits h2{margin:0;font-size:15px;font-weight:600}
+.credits ul{margin:0;padding-inline-start:18px;font-size:13px;color:var(--ink-2);display:grid;gap:4px}
+.credits a{color:var(--blue)}
 </style>
 <div class="wrap">
 <div class="top">
@@ -176,6 +180,11 @@ html[lang=ar] svg text{font-family:var(--arabic)}
     </section>
   </div>
 </div>
+<footer class="credits">
+  <h2 data-t="credTitle"></h2>
+  <ul id="credits"></ul>
+  <p class="note" data-t="credNote"></p>
+</footer>
 </div>
 <script id="D" type="application/json">__DATA__</script>
 <script id="C" type="application/json">__CTX__</script>
@@ -349,6 +358,7 @@ function whatChanged(){
   const ty=rows(D.type_years,'type','types',40).slice(0,8);document.getElementById('wcTypes').innerHTML=head+ty.map(r=>row(`<span class="${lang==='ar'?'ar':'en'}">${tr('types',r.type)}</span>`,r)).join('');
   document.getElementById('wcRed').innerHTML=head+D.redlight_roads.slice(0,8).map(r=>{const rr=byKey[r.key]||{name:r.name,region:r.region};return row(`${rn(rr)}<br><small style="color:var(--ink-3)">${regionName(r.region)}</small>`,{...r,g:r['2022']?Math.round(100*(r['2025']-r['2022'])/r['2022']):null})}).join('');
 }
-function refresh(){applyLang();buildSeg();kpis();legend();regionBtns();draw();table();yoy();clsPanel();fc();unm();whatChanged()}
+function credits(){document.getElementById('credits').innerHTML=I.credits.map(c=>`<li><a href="${c.url}" target="_blank" rel="noopener">${c.name[lang]}</a> — ${c.what[lang]}${c.licence?` (${c.licence})`:''}</li>`).join('')}
+function refresh(){credits();applyLang();buildSeg();kpis();legend();regionBtns();draw();table();yoy();clsPanel();fc();unm();whatChanged()}
 fit('UAE');refresh();
 </script>

@@ -93,6 +93,31 @@ cd site && python build.py
 The SDI, boundary and weather pulls are one-off scripts run in a browser console (see the
 `data/` JSON files); they are included so the build is reproducible without re-pulling.
 
+## Credits
+
+- **Abu Dhabi Police** — Traffic Accident Reports 2022–2025, published on the
+  [Abu Dhabi Open Data Platform](https://data.abudhabi/opendata/) (Department of Government
+  Enablement). Dataset pages: [AD 2022](https://data.abudhabi/opendata/dataset/detail?id=dfe36aab-84f5-45c8-8ed8-aeab63c794e4),
+  [AD 2023](https://data.abudhabi/opendata/dataset/detail?id=c9d87c0c-96d1-4400-969a-f9518149a51e),
+  [AD 2024](https://data.abudhabi/opendata/dataset/detail?id=ba71f7f5-a232-4b1c-a2ab-66a9e08fa33c),
+  [AD 2025](https://data.abudhabi/opendata/dataset/detail?id=72e667a5-48f1-4f4c-a1e0-f780024d22f1),
+  [Al Ain 2022–23](https://data.abudhabi/opendata/dataset/detail?id=ae103163-65c3-4d0f-87b1-7b9cafccabea),
+  [Al Ain 2024–25](https://data.abudhabi/opendata/dataset/detail?id=6912b2d7-cdbd-4ae5-ba7b-266d81881230),
+  [Al Dhafra 2022–25](https://data.abudhabi/opendata/dataset/detail?id=3326d226-aaa3-49b9-8c31-f1049d43b0f1).
+- **Abu Dhabi Spatial Data Infrastructure (AD-SDI)**, Department of Municipalities and Transport —
+  [sdi.gov.abudhabi](https://sdi.gov.abudhabi/); Navigable Roads (`Pub/AD_Navigable_Roads`) and
+  Land (`OpenData/ADSDI_OpenData` layer 27) via `arcgis.sdi.abudhabi.ae`. Licence terms not
+  published; used here for non-commercial analysis.
+- **geoBoundaries** — UAE ADM0/ADM1, CC BY 4.0. Runfola D. et al. (2020) *geoBoundaries: A global
+  database of political administrative boundaries*, PLoS ONE 15(4).
+- **Open-Meteo** — Historical Weather API (ERA5 reanalysis, Copernicus Climate Change Service),
+  CC BY 4.0. [open-meteo.com](https://open-meteo.com/).
+- **UAE public holidays** — [u.ae](https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays).
+- Fonts: Hanken Grotesk and Readex Pro via Google Fonts (OFL).
+
+Analysis, matching and modelling by Zayed Almazrouei, 2026. Cause labels are the attending
+officer's record and are reproduced as published.
+
 ## Known limits
 
 - 37% of injury accidents have no mappable road.

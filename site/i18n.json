@@ -335,6 +335,14 @@
 "wcGrowth": {
 "en": "Change",
 "ar": "التغيّر"
+},
+"credTitle": {
+"en": "Data and credits",
+"ar": "البيانات والمصادر"
+},
+"credNote": {
+"en": "Analysis, matching and modelling by Zayed Almazrouei. Cause labels are the attending officer's record; road matching is by name within the same city plus route-number aliases, so coverage is partial and stated on the page. Source code and data pipeline: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots.",
+"ar": "التحليل والمطابقة والنمذجة: زايد المزروعي. تصنيف الأسباب كما سجّله الضابط؛ ومطابقة الطرق تتم بالاسم ضمن المدينة نفسها مع أسماء بديلة بأرقام المسارات، لذا التغطية جزئية ومذكورة في الصفحة. الشيفرة المصدرية وخط معالجة البيانات: github.com/ZayedMAlmazrouei/abu-dhabi-injury-hotspots."
 }
 },
 "regions": {
@@ -773,5 +781,79 @@
 "عدم صلاحية الاطارات اثناء السير": "unfit tyres",
 "التجاوز من اليمين أواليساردون حذر": "careless overtaking left or right",
 "وهج الشمس": "sun glare"
+},
+"credits": [
+{
+"name": {
+"en": "Abu Dhabi Police — Traffic Accident Reports 2022–2025",
+"ar": "شرطة أبوظبي — تقارير حوادث المرور 2022–2025"
+},
+"url": "https://data.abudhabi/opendata/dataset/detail?id=ba71f7f5-a232-4b1c-a2ab-66a9e08fa33c",
+"what": {
+"en": "seven datasets on the Abu Dhabi Open Data Platform (data.abudhabi): Abu Dhabi 2022, 2023, 2024, 2025; Al Ain 2022–23 and 2024–25; Al Dhafra 2022–25",
+"ar": "سبع مجموعات بيانات على منصة أبوظبي للبيانات المفتوحة (data.abudhabi): أبوظبي 2022 و2023 و2024 و2025؛ العين 2022–23 و2024–25؛ الظفرة 2022–25"
+},
+"licence": "Abu Dhabi Open Data"
+},
+{
+"name": {
+"en": "Abu Dhabi Spatial Data Infrastructure (AD-SDI) — Navigable Roads and Land layers",
+"ar": "البنية التحتية للبيانات المكانية لأبوظبي — طبقات الطرق والأراضي"
+},
+"url": "https://sdi.gov.abudhabi/",
+"what": {
+"en": "official road names (Arabic and English), road class, lanes, speed limits, route numbers and geometry; Abu Dhabi land polygons — ArcGIS REST services of the Department of Municipalities and Transport",
+"ar": "أسماء الطرق الرسمية (عربي وإنجليزي) وفئتها وعدد المسارات والسرعة وأرقام المسارات والهندسة؛ مضلعات أراضي أبوظبي — خدمات ArcGIS REST لدائرة البلديات والنقل"
+},
+"licence": ""
+},
+{
+"name": {
+"en": "geoBoundaries — United Arab Emirates ADM0 and ADM1",
+"ar": "geoBoundaries — حدود دولة الإمارات والإمارات السبع"
+},
+"url": "https://www.geoboundaries.org/",
+"what": {
+"en": "country outline and emirate boundaries (Runfola et al., 2020)",
+"ar": "حدود الدولة وحدود الإمارات (Runfola وآخرون، 2020)"
+},
+"licence": "CC BY 4.0"
+},
+{
+"name": {
+"en": "Open-Meteo — Historical Weather API",
+"ar": "Open-Meteo — واجهة بيانات الطقس التاريخية"
+},
+"url": "https://open-meteo.com/en/docs/historical-weather-api",
+"what": {
+"en": "daily temperature, rain, wind, humidity and cloud 2022–2025 for Abu Dhabi, Al Ain and Madinat Zayed, from ERA5 reanalysis (Copernicus)",
+"ar": "درجات الحرارة والأمطار والرياح والرطوبة والغيوم يومياً 2022–2025 لأبوظبي والعين ومدينة زايد، من إعادة تحليل ERA5 (كوبرنيكوس)"
+},
+"licence": "CC BY 4.0"
+},
+{
+"name": {
+"en": "UAE Government — public holidays",
+"ar": "حكومة الإمارات — العطل الرسمية"
+},
+"url": "https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays",
+"what": {
+"en": "holiday and Eid dates used as forecast features",
+"ar": "تواريخ العطل والأعياد المستخدمة في نموذج التوقع"
+},
+"licence": ""
+},
+{
+"name": {
+"en": "Google Fonts — Hanken Grotesk, Readex Pro",
+"ar": "خطوط Google — Hanken Grotesk وReadex Pro"
+},
+"url": "https://fonts.google.com/",
+"what": {
+"en": "typefaces",
+"ar": "الخطوط"
+},
+"licence": "OFL"
 }
+]
 }
