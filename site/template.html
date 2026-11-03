@@ -1,0 +1,354 @@
+<title>Abu Dhabi Injury Hotspots</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap">
+<style>
+/* Design plan — Abu Dhabi Police road-safety data on the emirate's geography, bilingual.
+   Colour: ink navy on cool paper; sea slate, sand land; the only warm colour is the severity ramp, interactive accent is a police blue.
+   Type: Hanken Grotesk (Latin) / Readex Pro (Arabic); the page switches family with language.
+   Layout: title row with language + year controls; the map is the hero; then ranking | three readings. Mirrors for RTL. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#172033; --ink-2:#4a5468; --ink-3:#8a93a6; --rule:#dde2ea;
+  --blue:#1f4e8c; --blue-soft:#e3ecf8;
+  --sea:#cfdbe6; --land:#efe6d3; --land-edge:#d9ccb0; --net:#c9c0ab; --border:#b9a98a;
+  --s1:#f2dfae; --s2:#e8a84c; --s3:#d2601f; --s4:#8e1f10;
+  --more:#c8451f; --fewer:#2b7a5a;
+  --latin:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif; --arabic:"Readex Pro","Hanken Grotesk",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0f141b;--card:#161c25;--ink:#e9edf3;--ink-2:#aab3c2;--ink-3:#6f7a8d;--rule:#273040;--blue:#7fb0f0;--blue-soft:#1b2a40;--sea:#0e1a26;--land:#262a28;--land-edge:#353a36;--net:#3b4344;--border:#4a4f46;--s1:#5a4a2a;--s2:#a66d26;--s3:#d9691f;--s4:#ff6a4d;--more:#ff7a5c;--fewer:#5fc39a;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f141b;--card:#161c25;--ink:#e9edf3;--ink-2:#aab3c2;--ink-3:#6f7a8d;--rule:#273040;--blue:#7fb0f0;--blue-soft:#1b2a40;--sea:#0e1a26;--land:#262a28;--land-edge:#353a36;--net:#3b4344;--border:#4a4f46;--s1:#5a4a2a;--s2:#a66d26;--s3:#d9691f;--s4:#ff6a4d;--more:#ff7a5c;--fewer:#5fc39a;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--latin);margin:0;font-feature-settings:"tnum" 1}
+html[lang=ar] body{font-family:var(--arabic);font-size:14.5px}
+.ar{font-family:var(--arabic);unicode-bidi:isolate;direction:rtl;display:inline-block}
+.en{font-family:var(--latin);unicode-bidi:isolate;direction:ltr;display:inline-block}
+.wrap{max-width:1280px;margin:0 auto;padding-block:26px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:end}
+@media (max-width:900px){.top{grid-template-columns:1fr}}
+h1{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin:0 0 8px;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+html[lang=ar] h1{letter-spacing:0}
+.lede{color:var(--ink-2);max-width:66ch;margin:0;font-size:15.5px}
+.ctl{display:grid;gap:8px;justify-items:end}
+html[lang=ar] .ctl{justify-items:start}
+.ctl .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+html[lang=ar] .ctl .row{justify-content:flex-start}
+.ctl .lbl{font-size:13px;color:var(--ink-3)}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:3px;gap:2px}
+.seg button{font:500 13.5px var(--latin);padding:6px 12px;border:0;background:transparent;color:var(--ink-2);cursor:pointer;border-radius:6px}
+html[lang=ar] .seg button{font-family:var(--arabic)}
+.seg button.on{background:var(--ink);color:var(--paper)}
+.seg button:disabled{opacity:.35;cursor:default}
+.seg button:focus-visible,.pills button:focus-visible,th:focus-visible,.zoom button:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+.mode{font-size:13px;color:var(--ink-2);text-align:end}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fig{padding:14px 18px 14px 0}
+html[lang=ar] .fig{padding:14px 0 14px 18px}
+.fig+.fig{border-inline-start:1px solid var(--rule);padding-inline-start:18px}
+@media (max-width:700px){.fig+.fig{border-inline-start:0;padding-inline-start:0;border-top:1px solid var(--rule)}}
+.fig b{display:block;font-size:28px;line-height:1.05;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.fig b .d{font-size:14px;font-weight:600;margin-inline-start:8px;vertical-align:middle}
+.fig span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:6px}
+.more,.fig .d.more{color:var(--more)} .fewer,.fig .d.fewer{color:var(--fewer)}
+.map{background:var(--card);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.map-bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.map-bar h2{margin:0;font-size:16px;font-weight:600}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pills button{font:500 13px var(--latin);padding:5px 11px;border:1px solid var(--rule);background:var(--card);color:var(--ink-2);border-radius:999px;cursor:pointer}
+html[lang=ar] .pills button{font-family:var(--arabic)}
+.pills button.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);align-items:center}
+.legend i{display:inline-block;width:22px;height:5px;border-radius:3px;vertical-align:middle;margin-inline-end:6px}
+.stage{position:relative;direction:ltr}
+canvas{width:100%;height:auto;display:block;background:var(--sea);touch-action:none;cursor:grab}
+canvas.drag{cursor:grabbing}
+.zoom{position:absolute;right:12px;top:12px;display:grid;gap:4px}
+.zoom button{width:32px;height:32px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;font:500 17px var(--latin);cursor:pointer;box-shadow:0 1px 2px rgba(23,32,51,.08)}
+.hint{position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--ink-2);background:color-mix(in srgb,var(--card) 80%,transparent);padding:3px 8px;border-radius:5px;pointer-events:none}
+html[lang=ar] .hint{left:auto;right:12px;direction:rtl}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font:13px/1.45 var(--latin);padding:8px 11px;border-radius:7px;width:max-content;max-width:min(320px,80vw);transform:translate(-50%,calc(-100% - 12px));white-space:normal;overflow-wrap:anywhere;z-index:2;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+html[lang=ar] .tip{direction:rtl;font-family:var(--arabic);text-align:right}
+.tip .name{font-weight:600;font-size:14px;display:block}
+.tip .sub{opacity:.75;font-size:12px;display:block;margin-top:2px}
+.tip .sub .ar,.tip .sub .en{display:inline;font-size:12.5px;font-weight:500}
+.cols{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;min-width:0;display:grid;gap:10px;align-content:start}
+.card h2{margin:0;font-size:16px;font-weight:600}
+.card p{margin:0;color:var(--ink-2);font-size:13.5px}
+.stack{display:grid;gap:20px;min-width:0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 8px;border-bottom:1px solid var(--rule);text-align:end;white-space:nowrap;vertical-align:top}
+th{font-size:12.5px;font-weight:500;color:var(--ink-3);cursor:pointer;user-select:none}
+th.on{color:var(--blue)}
+th.on::after{content:" ▾";font-size:10px}
+td.name,th.name{text-align:start;white-space:normal;min-width:200px}
+td.name .n1{font-weight:500;display:block}
+td.name .n2{display:block;color:var(--ink-2);font-size:12.5px}
+td.name small{display:block;color:var(--ink-3);font-size:12px}
+.bar{display:inline-block;height:8px;border-radius:2px;background:var(--blue);vertical-align:middle;margin-inline-end:7px;opacity:.85}
+.rows{display:grid;gap:7px}
+.row{display:grid;grid-template-columns:160px 1fr 44px;gap:10px;align-items:center;font-size:13px}
+.row .lab{color:var(--ink-2)}.row .lab small{color:var(--ink-3)}
+.row .trk{height:10px;background:var(--rule);border-radius:3px;overflow:hidden}
+.row .trk i{display:block;height:100%;background:var(--s3)}
+.row .val{font-weight:600;text-align:end}
+svg{direction:ltr}
+.wc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.cause{display:grid;grid-template-columns:minmax(0,1fr) 54px 54px 64px;gap:8px;align-items:center;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule)}
+.cause .lab{min-width:0;overflow-wrap:anywhere}.cause .n{text-align:end}.cause .g{text-align:end;font-weight:600}
+.cause.head{color:var(--ink-3);font-size:12px;font-weight:500;border-bottom:1px solid var(--rule)}
+.spark{display:inline-block;vertical-align:middle;height:14px;width:60px}
+.modeseg{margin-inline-start:auto}
+.areaLeg i{border-radius:50%;width:10px;height:10px}
+svg text{font:11.5px var(--latin);fill:var(--ink-3)}
+html[lang=ar] svg text{font-family:var(--arabic)}
+.note{font-size:13px;color:var(--ink-2)}
+.note ul{margin:6px 0 0;padding-inline-start:18px;columns:2;column-gap:18px}
+@media (max-width:560px){.note ul{columns:1}}
+.note li{break-inside:avoid}
+</style>
+<div class="wrap">
+<div class="top">
+  <div>
+    <h1 data-t="title"></h1>
+    <p class="lede" data-t="lede"></p>
+  </div>
+  <div class="ctl">
+    <div class="row"><span class="lbl" data-t="language"></span><div class="seg" id="langSeg"><button data-l="en">English</button><button data-l="ar">العربية</button></div></div>
+    <div class="row"><span class="lbl" data-t="year"></span><div class="seg" id="yearSeg"></div></div>
+    <div class="row"><span class="lbl" data-t="compare"></span><div class="seg" id="cmpSeg"></div></div>
+    <div class="mode" id="modeNote"></div>
+  </div>
+</div>
+
+<div class="figs" id="kpis"></div>
+
+<section class="map">
+  <div class="map-bar">
+    <h2 id="mapTitle"></h2>
+    <div class="pills" id="regionBtns"></div>
+    <div class="seg modeseg" id="modeSeg"><button data-m="count"></button><button data-m="resid"></button></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="stage">
+    <canvas id="cv" width="1920" height="1200" aria-label="Map of the UAE with Abu Dhabi roads coloured by injury accident count"></canvas>
+    <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zreset" aria-label="Reset view" style="font-size:13px">⌂</button></div>
+    <div class="hint" data-t="hint"></div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2 data-t="wcTitle"></h2>
+  <p data-t="wcNote"></p>
+  <div class="wc">
+    <div><h3 style="margin:6px 0;font-size:14px" data-t="wcCauses"></h3><div id="wcCauses"></div></div>
+    <div><h3 style="margin:6px 0;font-size:14px" data-t="wcTypes"></h3><div id="wcTypes"></div></div>
+    <div><h3 style="margin:6px 0;font-size:14px" data-t="wcRed"></h3><p data-t="wcRedNote" style="font-size:12.5px"></p><div id="wcRed"></div></div>
+  </div>
+</section>
+
+<div class="cols">
+  <section class="card">
+    <h2 id="tblTitle"></h2>
+    <p id="tblNote"></p>
+    <div class="tbl"><table id="tbl"><thead><tr id="thead"></tr></thead><tbody></tbody></table></div>
+  </section>
+  <div class="stack">
+    <section class="card">
+      <h2 data-t="yoyTitle"></h2>
+      <p data-t="yoyNote"></p>
+      <svg id="yoy" viewBox="0 0 520 200" width="100%" role="img" aria-label="Injury accidents and injured people per year"></svg>
+    </section>
+    <section class="card">
+      <h2 data-t="clsTitle"></h2>
+      <p data-t="clsNote"></p>
+      <div class="rows" id="cls"></div>
+    </section>
+    <section class="card">
+      <h2 data-t="fcTitle"></h2>
+      <p data-t="fcNote"></p>
+      <svg id="fc" viewBox="0 0 520 220" width="100%" role="img" aria-label="Actual versus predicted daily accidents, 2025"></svg>
+    </section>
+    <section class="card">
+      <h2 data-t="unmTitle"></h2>
+      <div class="note" id="unm"></div>
+    </section>
+  </div>
+</div>
+</div>
+<script id="D" type="application/json">__DATA__</script>
+<script id="C" type="application/json">__CTX__</script>
+<script id="F" type="application/json">__FC__</script>
+<script id="I" type="application/json">__I18N__</script>
+<script>
+const D=JSON.parse(document.getElementById('D').textContent), CTX=JSON.parse(document.getElementById('C').textContent), FC=JSON.parse(document.getElementById('F').textContent), I=JSON.parse(document.getElementById('I').textContent);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const YEARS=['2022','2023','2024','2025'];
+let year='all', cmp=null, lang='en', mode='count';
+try{lang=localStorage.getItem('hotspots-lang')==='ar'?'ar':'en'}catch(e){}
+const T=k=>(I.ui[k]||{})[lang]||(I.ui[k]||{}).en||k;
+const tr=(dict,s)=>lang==='en'?((I[dict]||{})[s]||s):s;
+const rn=r=>lang==='ar'?r.name:(I.roads[r.name]||r.name);
+const rn2=r=>lang==='ar'?(I.roads[r.name]||''):r.name;
+const regionName=R=>(I.regions[R]||{})[lang]||R;
+const clsName=c=>(I.cls[c]||{})[lang]||c;
+const num=n=>Math.round(n).toLocaleString('en');
+const sep=()=>lang==='ar'?'، ':', ';
+const ord=()=>cmp?[year,cmp].sort():[null,null];
+const roads=D.roads, byKey=Object.fromEntries(roads.map(r=>[r.key,r]));
+function stat(r){
+  if(year==='all') return {a:r.accidents,i:r.injured,m:r.multi,n:r.night,c:r.top_cause,t:r.top_type};
+  const y=(D.per_year[r.key]||{})[year]||{a:0,i:0,m:null,n:null,c:null,t:null};
+  if(!cmp) return y;
+  const [Y1,Y2]=ord(),py=D.per_year[r.key]||{};
+  const e=py[Y1]||{a:0,i:0}, l=py[Y2]||{a:0,i:0,m:null,n:null,c:null,t:null};
+  return {...l,a:l.a,b:e.a,d:l.a-e.a,i:l.i,di:l.i-e.i};
+}
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-t]').forEach(el=>el.textContent=T(el.dataset.t));
+  document.querySelectorAll('#langSeg button').forEach(b=>b.classList.toggle('on',b.dataset.l===lang));
+}
+document.getElementById('langSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;lang=b.dataset.l;try{localStorage.setItem('hotspots-lang',lang)}catch(x){}refresh()});
+const ys=document.getElementById('yearSeg'),cs=document.getElementById('cmpSeg');
+function buildSeg(){
+  ys.innerHTML=['all',...YEARS].map(y=>`<button data-y="${y}" class="${y===year?'on':''}">${y==='all'?T('allYears'):y}</button>`).join('');
+  cs.innerHTML=['none',...YEARS].map(y=>`<button data-c="${y}" class="${(y==='none'?null:y)===cmp?'on':''}" ${year==='all'||y===year?'disabled':''}>${y==='none'?T('none'):y}</button>`).join('');
+  document.getElementById('modeNote').textContent=cmp?T('modeCmp').replace('{a}',ord()[0]).replace('{b}',ord()[1]):year==='all'?T('modeAll'):T('modeYear').replace('{y}',year);
+}
+ys.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;year=b.dataset.y;if(year==='all'||cmp===year)cmp=null;refresh()});
+cs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;cmp=b.dataset.c==='none'?null:b.dataset.c;refresh()});
+function kpis(){
+  const yt=D.year_totals,sel=roads.map(stat);
+  const totA=sel.reduce((s,x)=>s+x.a,0),totI=sel.reduce((s,x)=>s+x.i,0);
+  let items;
+  if(cmp){const [Y1,Y2]=ord(),A=yt[Y2],B=yt[Y1];const d=(a,b)=>`<span class="d ${a>b?'more':a<b?'fewer':''}">${a>b?'+':''}${Math.round(100*(a-b)/b)}%</span>`;
+    items=[[num(A.a)+d(A.a,B.a),T('kCmpAcc').replace('{b}',Y2).replace('{a}',Y1)],[num(A.i)+d(A.i,B.i),T('kCmpInj').replace('{b}',Y2)],[Math.round(100*A.m)+'%'+d(A.m,B.m),T('kCmpMulti').replace('{b}',Y2)],[num(totA),T('kCmpMapped').replace('{b}',Y2)],[T('upDown').replace('{u}',sel.filter(x=>x.d>0).length).replace('{d}',sel.filter(x=>x.d<0).length),T('kCmpRoads').replace('{b}',Y2)]];}
+  else{const all=year==='all',A=all?null:yt[year],base=all?D.total_injury_accidents:A.a;
+    items=[[num(base),T('kAll')],[num(totA),T('kMapped').replace('{p}',Math.round(100*totA/base))],[num(roads.filter(r=>stat(r).a>0).length),T('kRoads')],[num(totI),T('kInjured')],[Math.round(100*roads.filter(r=>r.cls==='Freeway').reduce((s,r)=>s+stat(r).a,0)/Math.max(1,totA))+'%',T('kFreeway')]];}
+  document.getElementById('kpis').innerHTML=items.map(([b,s])=>`<div class="fig"><b>${b}</b><span>${s}</span></div>`).join('');
+}
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
+const regions={'UAE':{lon:[51.4,56.5],lat:[22.5,26.2]},'Abu Dhabi Emirate':{lon:[51.45,56.15],lat:[22.55,25.05]},'Abu Dhabi city':{lon:[54.25,54.85],lat:[24.25,24.65]},'Al Ain':{lon:[55.55,55.9],lat:[24.05,24.35]},'Al Dhafra':{lon:[51.5,54.4],lat:[22.6,24.4]}};
+const rad=d=>d*Math.PI/180, merc=lat=>Math.log(Math.tan(Math.PI/4+rad(lat)/2));
+let V={cx:0,cy:0,s:1};
+function fit(reg){const v=regions[reg],x0=rad(v.lon[0]),x1=rad(v.lon[1]),y0=merc(v.lat[0]),y1=merc(v.lat[1]),pad=30;V.s=Math.min((cv.width-2*pad)/(x1-x0),(cv.height-2*pad)/(y1-y0));V.cx=(x0+x1)/2;V.cy=(y0+y1)/2;}
+const P=([lon,lat])=>[cv.width/2+(rad(lon)-V.cx)*V.s, cv.height/2-(merc(lat)-V.cy)*V.s];
+const colAbs=n=>n>=150?css('--s4'):n>=60?css('--s3'):n>=20?css('--s2'):css('--s1');
+const colYr=n=>n>=40?css('--s4'):n>=15?css('--s3'):n>=5?css('--s2'):css('--s1');
+const vis=(x,y)=>x>-60&&y>-60&&x<cv.width+60&&y<cv.height+60;
+function tracePath(pts){const q=pts.map(P);let any=false;for(const [x,y] of q)if(vis(x,y)){any=true;break}
+  if(!any)return false;
+  if(q.length<3){ctx.moveTo(q[0][0],q[0][1]);for(let i=1;i<q.length;i++)ctx.lineTo(q[i][0],q[i][1]);return true}
+  ctx.moveTo(q[0][0],q[0][1]);
+  for(let i=1;i<q.length-1;i++){const mx=(q[i][0]+q[i+1][0])/2,my=(q[i][1]+q[i+1][1])/2;ctx.quadraticCurveTo(q[i][0],q[i][1],mx,my)}
+  ctx.lineTo(q[q.length-1][0],q[q.length-1][1]);return true}
+let hit=[];
+function draw(hl){
+  ctx.clearRect(0,0,cv.width,cv.height);hit=[];ctx.lineCap='round';ctx.lineJoin='round';const K=1.5;
+  ctx.fillStyle=css('--land');ctx.strokeStyle=css('--land-edge');ctx.lineWidth=1.4;
+  ctx.beginPath();for(const r of CTX.land){const pts=r.hole||r;pts.forEach((pt,i)=>{const [x,y]=P(pt);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath()}ctx.fill('evenodd');ctx.stroke();
+  ctx.save();ctx.setLineDash([6,5]);ctx.strokeStyle=css('--border');ctx.lineWidth=1.2;
+  for(const ln of CTX.borders){ctx.beginPath();let any=false;ln.forEach((pt,i)=>{const [x,y]=P(pt);if(vis(x,y))any=true;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});if(any)ctx.stroke()}ctx.restore();
+  ctx.strokeStyle=css('--net');
+  for(const [cls,seg] of CTX.uae){if(cls===3&&V.s<6000)continue;ctx.lineWidth=(cls<=2?1.1:.7)*K;ctx.beginPath();if(tracePath(seg))ctx.stroke()}
+  for(const [cls,seg] of CTX.roads){if(cls===4&&V.s<13000)continue;if(cls===3&&V.s<6000)continue;ctx.lineWidth=(cls<=2?1.1:cls===3?.8:.5)*K;ctx.beginPath();if(tracePath(seg))ctx.stroke()}
+  const items=roads.map(r=>({r,s:stat(r)})).filter(o=>cmp?o.s.a+o.s.b>0:o.s.a>0).sort((a,b)=>Math.abs(cmp?a.s.d:a.s.a)-Math.abs(cmp?b.s.d:b.s.a));
+  for(const {r,s} of items){const segs=D.geo[r.key]||[];let color,w;
+    if(cmp){color=s.d>0?css('--more'):s.d<0?css('--fewer'):css('--net');w=1.4+Math.min(6,Math.sqrt(Math.abs(s.d))*1.1)}
+    else if(mode==='resid'){if(r.resid_pct==null){color=css('--net');w=1.4}else{color=r.resid_pct>15?css('--more'):r.resid_pct<-15?css('--fewer'):css('--net');w=1.4+Math.min(6,Math.sqrt(Math.abs(r.resid25))*1.1)}}
+    else{color=year==='all'?colAbs(s.a):colYr(s.a);w=1.6+5*(s.m||0)}
+    const dim=hl&&hl!==r.key;ctx.strokeStyle=dim?css('--net'):color;ctx.lineWidth=(hl===r.key?w+2:w)*K;ctx.globalAlpha=dim?.4:1;
+    for(const seg of segs){ctx.beginPath();if(tracePath(seg)){ctx.stroke();const m=P(seg[Math.floor(seg.length/2)]);hit.push([m[0],m[1],r.key])}}}
+  ctx.globalAlpha=1;
+  // area markers (districts the police name instead of a road)
+  if(!cmp&&mode==='count'){for(const a of D.areas){const n=year==='all'?a.accidents:(a.per_year[year]||0);if(!n)continue;const [x,y]=P([a.lon,a.lat]);if(!vis(x,y))continue;const rr=6+Math.sqrt(n)*2.2;ctx.beginPath();ctx.arc(x,y,rr,0,7);ctx.fillStyle=year==='all'?colAbs(n):colYr(n);ctx.globalAlpha=.55;ctx.fill();ctx.globalAlpha=1;ctx.lineWidth=1.5;ctx.strokeStyle=css('--ink-2');ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);hit.push([x,y,'area:'+a.ar])}}
+  ctx.font=lang==='ar'?'500 19px Readex Pro, sans-serif':'500 18px Hanken Grotesk, system-ui, sans-serif';
+  const minLevel=V.s<7500?1:V.s<18000?2:3;
+  ctx.fillStyle=css('--ink-2');ctx.textAlign=lang==='ar'?'right':'left';ctx.direction=lang==='ar'?'rtl':'ltr';
+  for(const [n,lo,la,lvl] of I.places){if(lvl>minLevel)continue;const [x,y]=P([lo,la]);if(!vis(x,y))continue;ctx.beginPath();ctx.arc(x,y,3.5,0,7);ctx.fill();ctx.fillText(n[lang],x+(lang==='ar'?-9:9),y-9)}
+  ctx.textAlign='left';ctx.direction='ltr';
+}
+function legend(){const L=document.getElementById('legend');
+  if(cmp){const [Y1,Y2]=ord();L.innerHTML=`<span><i style="background:var(--more)"></i>${T('legMore').replace('{b}',Y2).replace('{a}',Y1)}</span><span><i style="background:var(--fewer)"></i>${T('legFewer').replace('{b}',Y2).replace('{a}',Y1)}</span><span><i style="background:var(--net)"></i>${T('legSame')}</span>`}
+  else if(mode==='resid'){L.innerHTML=`<span><i style="background:var(--more)"></i>${T('legWorse')}</span><span><i style="background:var(--fewer)"></i>${T('legBetter')}</span><span><i style="background:var(--net)"></i>${T('legOnTrend')}</span>`}
+  else{const th=year==='all'?[20,60,150]:[5,15,40];L.innerHTML=`<span><i style="background:var(--s1)"></i>${T('under').replace('{n}',th[0])}</span><span><i style="background:var(--s2)"></i>${th[0]}–${th[1]-1}</span><span><i style="background:var(--s3)"></i>${th[1]}–${th[2]-1}</span><span><i style="background:var(--s4)"></i>${T('andMore').replace('{n}',th[2])}</span><span>${T('legWidth')}</span>`}
+  document.querySelectorAll('#modeSeg button').forEach(b=>{b.textContent=T(b.dataset.m==='count'?'modeCount':'modeResid');b.classList.toggle('on',b.dataset.m===mode);b.disabled=!!cmp});
+  if(!cmp&&mode==='count'&&D.areas.length)L.innerHTML+=`<span class="areaLeg"><i style="background:var(--s2);border:1.5px dashed var(--ink-2)"></i>${T('legArea')}</span>`;
+  document.getElementById('mapTitle').textContent=(cmp?T('mapCmp').replace('{a}',ord()[0]).replace('{b}',ord()[1]):mode==='resid'?T('mapResid'):T('mapTitle').replace('{y}',year==='all'?T('range'):year))}
+document.getElementById('modeSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;mode=b.dataset.m;legend();draw()});
+let drag=null;
+const toCanvas=e=>{const b=cv.getBoundingClientRect();return [(e.clientX-b.left)*cv.width/b.width,(e.clientY-b.top)*cv.height/b.height]};
+function zoomAt(f,px,py){const nx=V.cx+(px-cv.width/2)/V.s*(1-1/f),ny=V.cy-(py-cv.height/2)/V.s*(1-1/f);V.s=Math.max(3000,Math.min(600000,V.s*f));V.cx=nx;V.cy=ny;draw()}
+cv.addEventListener('wheel',e=>{e.preventDefault();const [x,y]=toCanvas(e);zoomAt(e.deltaY<0?1.25:0.8,x,y)},{passive:false});
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);drag={x:e.clientX,y:e.clientY,cx:V.cx,cy:V.cy};cv.classList.add('drag')});
+['pointerup','pointercancel'].forEach(t=>cv.addEventListener(t,()=>{drag=null;cv.classList.remove('drag')}));
+let pinch=null;cv.addEventListener('touchstart',e=>{if(e.touches.length===2)pinch=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY)},{passive:true});
+cv.addEventListener('touchmove',e=>{if(e.touches.length===2&&pinch){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);zoomAt(d/pinch,cv.width/2,cv.height/2);pinch=d}},{passive:true});
+cv.addEventListener('touchend',()=>{pinch=null},{passive:true});
+cv.addEventListener('pointermove',e=>{
+  if(drag){const k=cv.width/cv.getBoundingClientRect().width;V.cx=drag.cx-(e.clientX-drag.x)*k/V.s;V.cy=drag.cy+(e.clientY-drag.y)*k/V.s;tip.hidden=true;draw();return}
+  const [x,y]=toCanvas(e);let best=null,bd=20*cv.width/cv.getBoundingClientRect().width;for(const [hx,hy,k] of hit){const d=Math.hypot(hx-x,hy-y);if(d<bd){bd=d;best=k}}
+  if(best&&best.startsWith('area:')){const a=D.areas.find(x=>'area:'+x.ar===best),b=cv.getBoundingClientRect();const n=year==='all'?a.accidents:(a.per_year[year]||0);tip.hidden=false;tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px';
+    tip.innerHTML=`<span class="name">${lang==='ar'?a.ar:a.en}</span><span class="sub">${lang==='ar'?a.en:a.ar}</span><span class="sub">${T('areaNote')}</span>${T('tipAcc').replace('{a}',n).replace('{i}',num(year==='all'?a.injured:n))}<span class="sub">${T('topCause')}: <span class="${lang==='ar'?'ar':'en'}">${tr('causes',a.top_cause)}</span></span>`;draw();return}
+  if(best){const r=byKey[best],s=stat(r),b=cv.getBoundingClientRect();tip.hidden=false;tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px';
+    const other=rn2(r);
+    tip.innerHTML=`<span class="name">${rn(r)}</span>${other?`<span class="sub">${other}</span>`:''}<span class="sub">${regionName(r.region)}${sep()}${clsName(r.cls)}${sep()}${Math.round(r.speed)} ${T('kmh')}</span>`
+      +((r.police_names||[]).some(p=>p!==r.name)?`<span class="sub">${T('policeLabels')}: <span class="ar">${r.police_names.slice(0,3).join('، ')}</span></span>`:'')
+      +(mode==='resid'&&r.resid_pct!=null?`<span class="sub">${T('residTip').replace('{y}',r.y25).replace('{e}',r.expected25).replace('{p}',(r.resid_pct>0?'+':'')+r.resid_pct)}</span>`:'')
+      +(r.extended?`<span class="sub">${T('extended').replace('{r}',r.extended.map(regionName).join(sep())).replace('{p}',regionName(r.region))}</span>`:'')
+      +(cmp?`${T('tipCmp').replace('{b0}',s.b).replace('{a}',ord()[0]).replace('{b1}',s.a).replace('{b}',ord()[1])} <b>(${s.d>0?'+':''}${s.d})</b><br><span class="sub">${T('tipInjCmp').replace('{n}',s.i).replace('{b}',ord()[1]).replace('{d}',(s.di>0?'+':'')+s.di)}</span>`
+        :`${T('tipAcc').replace('{a}',s.a).replace('{i}',num(s.i))}${s.m!=null?`<br><span class="sub">${T('tipMulti').replace('{p}',Math.round(100*s.m))}</span>`:''}${s.c?`<span class="sub">${T('topCause')}: <span class="${lang==='ar'?'ar':'en'}">${tr('causes',s.c)}</span></span>`:''}`);
+    draw(best)}else{tip.hidden=true;draw()}});
+cv.addEventListener('pointerleave',()=>{tip.hidden=true;draw()});
+document.getElementById('zin').onclick=()=>zoomAt(1.5,cv.width/2,cv.height/2);
+document.getElementById('zout').onclick=()=>zoomAt(1/1.5,cv.width/2,cv.height/2);
+document.getElementById('zreset').onclick=()=>{fit('UAE');draw()};
+const rb=document.getElementById('regionBtns');let curReg='UAE';
+function regionBtns(){rb.innerHTML='';Object.keys(regions).forEach(k=>{const b=document.createElement('button');b.textContent=(I.views[k]||{})[lang]||k;b.className=k===curReg?'on':'';b.onclick=()=>{curReg=k;[...rb.children].forEach(c=>c.className='');b.className='on';fit(k);draw()};rb.appendChild(b)})}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>draw());
+let sk='a',sd=-1;const tb=document.querySelector('#tbl tbody'),th=document.getElementById('thead');
+function table(){
+  const cols=cmp?[['name',T('road')],['b',ord()[0]],['a',ord()[1]],['d',T('change')],['i',T('injured')+' '+ord()[1]],['di',T('injChange')],['speed',T('limit')]]:[['name',T('road')],['a',T('accidents')],['i',T('injured')],['m',T('multi')],['n',T('night')],['speed',T('limit')],...(year==='all'?[['per_km_yr',T('perKm')],['trend','<span class="en">2022→2025</span>']]:[])];
+  if(!cols.some(c=>c[0]===sk))sk=cmp?'d':'a';
+  th.innerHTML=cols.map(([k,l])=>`<th data-k="${k}" class="${k==='name'?'name ':''}${k===sk?'on':''}" tabindex="0">${l}</th>`).join('');
+  const rows=roads.map(r=>{const s=stat(r);return {r,s,v:{name:rn(r),a:s.a,i:s.i,m:s.m,n:s.n,speed:r.speed,per_km_yr:r.per_km_yr,trend:r.y25-r.y22,b:s.b,d:s.d,di:s.di}}}).filter(o=>cmp?(o.s.a+o.s.b)>0:o.s.a>0)
+    .sort((x,y)=>{const A=x.v[sk]??-1e9,B=y.v[sk]??-1e9;return typeof A==='string'?sd*A.localeCompare(B):sd*(A-B)}).slice(0,40);
+  const mx=Math.max(1,...rows.map(o=>Math.abs(cmp?o.s.d:o.s.a)));const sg=v=>v==null?'–':(v>0?'+':'')+v;
+  tb.innerHTML=rows.map(({r,s,v})=>{const other=rn2(r);const cells={name:`<td class="name"><span class="n1">${rn(r)}</span>${other?`<span class="n2">${other}</span>`:''}<small>${regionName(r.region)}${sep()}${clsName(r.cls)}${sep()}${r.km} ${T('km')}${s.t?`. ${T('mostly')} <span class="${lang==='ar'?'ar':'en'}">${tr('types',s.t)}</span>`:''}</small></td>`,
+    a:`<td>${cmp?'':`<span class="bar" style="width:${Math.round(56*s.a/mx)}px"></span>`}${s.a}</td>`,i:`<td>${num(s.i)}</td>`,m:`<td>${s.m==null?'–':Math.round(100*s.m)+'%'}</td>`,n:`<td>${s.n==null?'–':Math.round(100*s.n)+'%'}</td>`,speed:`<td>${Math.round(r.speed)}</td>`,
+    per_km_yr:`<td>${r.per_km_yr==null?'–':r.per_km_yr.toFixed(2)}</td>`,trend:`<td class="${v.trend>0?'more':v.trend<0?'fewer':''}"><span class="en">${r.y22}→${r.y25}</span></td>`,b:`<td>${s.b}</td>`,
+    d:`<td class="${s.d>0?'more':s.d<0?'fewer':''}"><span class="bar" style="width:${Math.round(56*Math.abs(s.d)/mx)}px;background:${s.d>0?'var(--more)':'var(--fewer)'}"></span>${sg(s.d)}</td>`,di:`<td class="${s.di>0?'more':s.di<0?'fewer':''}">${sg(s.di)}</td>`};
+    return '<tr>'+cols.map(c=>cells[c[0]]).join('')+'</tr>'}).join('');
+  document.getElementById('tblTitle').textContent=cmp?T('tblCmp').replace('{a}',ord()[0]).replace('{b}',ord()[1]):T('tblTitle').replace('{y}',year==='all'?T('range'):year);
+  document.getElementById('tblNote').textContent=cmp?T('tblNoteCmp'):T('tblNote');
+}
+th.addEventListener('click',e=>{const h=e.target.closest('th');if(!h)return;if(sk===h.dataset.k)sd*=-1;else{sk=h.dataset.k;sd=h.dataset.k==='name'?1:-1}table()});
+th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.target.click()}});
+function yoy(){const s=document.getElementById('yoy'),W=520,H=200,L=40,R=10,Tp=14,B=30,yt=D.year_totals,mx=3000,n=YEARS.length,bw=(W-L-R)/n,Y=v=>Tp+(H-Tp-B)*(1-v/mx);
+  let out=[0,1000,2000,3000].map(v=>`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`).join('');
+  YEARS.forEach((y,i)=>{const x=L+i*bw+bw*0.18,t=yt[y];out+=`<rect x="${x}" y="${Y(t.i)}" width="${bw*0.3}" height="${Y(0)-Y(t.i)}" fill="var(--s1)"/><rect x="${x+bw*0.32}" y="${Y(t.a)}" width="${bw*0.3}" height="${Y(0)-Y(t.a)}" fill="var(--s3)"/><text x="${x+bw*0.31}" y="${H-10}" text-anchor="middle">${y}</text><text x="${x+bw*0.47}" y="${Y(t.a)-4}" text-anchor="middle" style="fill:var(--ink)">${t.a}</text>`});
+  out+=`<rect x="${W-190}" y="${Tp}" width="10" height="10" fill="var(--s3)"/><text x="${W-175}" y="${Tp+9}">${T('accidents')}</text><rect x="${W-95}" y="${Tp}" width="10" height="10" fill="var(--s1)"/><text x="${W-80}" y="${Tp+9}">${T('injured')}</text>`;
+  s.innerHTML=out}
+function clsPanel(){const cls=[["Rural Expressway",237,.325,78],["Freeway",1341,.299,108],["Minor Collector",164,.268,59],["Minor Local",845,.225,41],["Expressway",137,.219,83],["Major Arterial",444,.191,67],["Major Collector",109,.156,63],["Major Local",62,.129,66],["Minor Arterial",137,.117,62]];
+  document.getElementById('cls').innerHTML=cls.map(([n,c,m,s])=>`<div class="row"><span class="lab">${clsName(n)} <small>${s} ${T('kmh')}${sep()}${c} ${T('crashes')}</small></span><span class="trk"><i style="width:${m/.35*100}%"></i></span><span class="val">${Math.round(m*100)}%</span></div>`).join('')}
+function fc(){const s=document.getElementById('fc'),d=FC.filter(r=>r.region==='abu_dhabi'),W=520,H=220,L=36,R=8,Tp=12,B=28,ymax=Math.ceil(Math.max(...d.flatMap(r=>[r.y,r.pred]))/100)*100,X=i=>L+(W-L-R)*i/(d.length-1),Y=v=>Tp+(H-Tp-B)*(1-v/ymax);
+ const path=k=>d.map((r,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(r[k]).toFixed(1)).join(' ');
+ const grid=[0,200,400,600,800].filter(v=>v<=ymax).map(v=>`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`).join('');
+ const months=T('months').split('|').map((m,i)=>`<text x="${X(Math.round(i*2*30.4))}" y="${H-8}" text-anchor="middle">${m}</text>`).join('');
+ s.innerHTML=grid+months+`<path d="${path('y')}" fill="none" stroke="var(--ink-3)" stroke-width="1.2" opacity=".8"/><path d="${path('pred')}" fill="none" stroke="var(--blue)" stroke-width="1.7"/><g><line x1="${W-170}" x2="${W-150}" y1="${Tp+6}" y2="${Tp+6}" stroke="var(--ink-3)" stroke-width="1.2"/><text x="${W-145}" y="${Tp+10}">${T('actual')}</text><line x1="${W-80}" x2="${W-60}" y1="${Tp+6}" y2="${Tp+6}" stroke="var(--blue)" stroke-width="1.7"/><text x="${W-55}" y="${Tp+10}">${T('model')}</text></g>`}
+function unm(){const un=Object.entries(D.unmatched);document.getElementById('unm').innerHTML=T('unm1').replace('{n}',num(D.total_injury_accidents-D.matched)).replace('{p}',Math.round(100*(1-D.matched/D.total_injury_accidents)))+`<ul>${un.slice(0,10).map(([k,v])=>`<li><span class="ar">${k}</span> (${v})</li>`).join('')}</ul>`+T('unm2')}
+function spark(vals,color){const mx=Math.max(1,...vals),W=60,H=14;const pts=vals.map((v,i)=>`${(i/(vals.length-1))*W},${H-(v/mx)*(H-2)-1}`).join(' ');return `<svg class="spark" viewBox="0 0 ${W} ${H}"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6"/></svg>`}
+function whatChanged(){
+  const sg=v=>(v>0?'+':'')+v;
+  const rows=(arr,key,dict,min)=>arr.filter(r=>r['2022']+r['2025']>=min).map(r=>({...r,g:r['2022']?Math.round(100*(r['2025']-r['2022'])/r['2022']):null})).sort((a,b)=>(b['2025']-b['2022'])-(a['2025']-a['2022']));
+  const head=`<div class="cause head"><span>${T('wcLabel')}</span><span class="n">2022</span><span class="n">2025</span><span class="g">${T('wcGrowth')}</span></div>`;
+  const row=(label,r)=>`<div class="cause"><span class="lab">${spark([r['2022'],r['2023'],r['2024'],r['2025']],r['2025']>r['2022']?'var(--more)':'var(--fewer)')} ${label}</span><span class="n">${r['2022']}</span><span class="n">${r['2025']}</span><span class="g ${r['2025']>r['2022']?'more':r['2025']<r['2022']?'fewer':''}">${r.g==null?'new':sg(r.g)+'%'}</span></div>`;
+  const c=rows(D.cause_years,'cause','causes',60).slice(0,9);document.getElementById('wcCauses').innerHTML=head+c.map(r=>row(`<span class="${lang==='ar'?'ar':'en'}">${tr('causes',r.cause)}</span>`,r)).join('');
+  const ty=rows(D.type_years,'type','types',40).slice(0,8);document.getElementById('wcTypes').innerHTML=head+ty.map(r=>row(`<span class="${lang==='ar'?'ar':'en'}">${tr('types',r.type)}</span>`,r)).join('');
+  document.getElementById('wcRed').innerHTML=head+D.redlight_roads.slice(0,8).map(r=>{const rr=byKey[r.key]||{name:r.name,region:r.region};return row(`${rn(rr)}<br><small style="color:var(--ink-3)">${regionName(r.region)}</small>`,{...r,g:r['2022']?Math.round(100*(r['2025']-r['2022'])/r['2022']):null})}).join('');
+}
+function refresh(){applyLang();buildSeg();kpis();legend();regionBtns();draw();table();yoy();clsPanel();fc();unm();whatChanged()}
+fit('UAE');refresh();
+</script>

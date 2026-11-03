@@ -1,0 +1,777 @@
+{
+"ui": {
+"title": {
+"en": "Where injury accidents happen in Abu Dhabi Emirate",
+"ar": "أين تقع حوادث الإصابات في إمارة أبوظبي"
+},
+"lede": {
+"en": "Police-reported accidents with injuries, 2022 to 2025, placed on the official road network. Each coloured road is an Abu Dhabi Police street label matched to the official road in the same city in the Spatial Data Infrastructure, including descriptive labels such as the truck road, the Tarif to Liwa road or the Al Ain to Dubai road mapped to their route numbers. Pick a year, or compare two.",
+"ar": "حوادث الإصابات المسجلة لدى شرطة أبوظبي من 2022 إلى 2025، موضوعة على شبكة الطرق الرسمية. كل طريق ملوّن هو اسم شارع في سجلات الشرطة تمت مطابقته مع الطريق الرسمي في المدينة نفسها ضمن البنية التحتية للبيانات المكانية، بما في ذلك الأسماء الوصفية مثل طريق الشاحنات وطريق طريف–ليوا وطريق العين–دبي التي رُبطت بأرقام مساراتها. اختر سنة، أو قارن بين سنتين."
+},
+"language": {
+"en": "Language",
+"ar": "اللغة"
+},
+"year": {
+"en": "Year",
+"ar": "السنة"
+},
+"compare": {
+"en": "Compare with",
+"ar": "مقارنة مع"
+},
+"allYears": {
+"en": "All years",
+"ar": "كل السنوات"
+},
+"none": {
+"en": "None",
+"ar": "بدون"
+},
+"range": {
+"en": "2022 to 2025",
+"ar": "2022 إلى 2025"
+},
+"modeAll": {
+"en": "Totals for 2022 to 2025.",
+"ar": "الإجمالي من 2022 إلى 2025."
+},
+"modeYear": {
+"en": "{y} only. Choose a second year to see what changed.",
+"ar": "سنة {y} فقط. اختر سنة ثانية لمعرفة ما تغيّر."
+},
+"modeCmp": {
+"en": "Change from {a} to {b}. Colour is direction, width is size of change.",
+"ar": "التغيّر من {a} إلى {b}. اللون يدل على الاتجاه، وسماكة الخط على حجم التغيّر."
+},
+"kAll": {
+"en": "injury accidents in the police files",
+"ar": "حادث إصابة في ملفات الشرطة"
+},
+"kMapped": {
+"en": "placed on a named road ({p}%)",
+"ar": "موضوع على طريق مسمّى ({p}٪)"
+},
+"kRoads": {
+"en": "roads with at least one",
+"ar": "طريقاً بحادث واحد على الأقل"
+},
+"kInjured": {
+"en": "people injured on mapped roads",
+"ar": "مصاباً على الطرق الموضوعة على الخريطة"
+},
+"kFreeway": {
+"en": "of mapped accidents were on freeways",
+"ar": "من الحوادث الموضوعة وقعت على الطرق السريعة"
+},
+"kCmpAcc": {
+"en": "injury accidents in {b}, against {a}",
+"ar": "حادث إصابة في {b} مقارنة بـ{a}"
+},
+"kCmpInj": {
+"en": "people injured in {b}",
+"ar": "مصاباً في {b}"
+},
+"kCmpMulti": {
+"en": "crashes with two or more injured in {b}",
+"ar": "حوادث بإصابتين أو أكثر في {b}"
+},
+"kCmpMapped": {
+"en": "on mapped roads in {b}",
+"ar": "على الطرق الموضوعة في {b}"
+},
+"kCmpRoads": {
+"en": "roads with more or fewer accidents by {b}",
+"ar": "طرق زادت أو قلّت حوادثها بحلول {b}"
+},
+"upDown": {
+"en": "{u} up, {d} down",
+"ar": "{u} زيادة، {d} انخفاض"
+},
+"mapTitle": {
+"en": "Injury accidents per road, {y}",
+"ar": "حوادث الإصابات لكل طريق، {y}"
+},
+"mapCmp": {
+"en": "Change in injury accidents, {a} to {b}",
+"ar": "التغيّر في حوادث الإصابات من {a} إلى {b}"
+},
+"under": {
+"en": "Under {n}",
+"ar": "أقل من {n}"
+},
+"andMore": {
+"en": "{n} and more",
+"ar": "{n} فأكثر"
+},
+"legWidth": {
+"en": "Thicker lines: more people hurt per crash",
+"ar": "الخطوط الأسمك: إصابات أكثر في الحادث الواحد"
+},
+"legMore": {
+"en": "More in {b} than {a}",
+"ar": "أكثر في {b} من {a}"
+},
+"legFewer": {
+"en": "Fewer in {b} than {a}",
+"ar": "أقل في {b} من {a}"
+},
+"legSame": {
+"en": "Unchanged",
+"ar": "بدون تغيّر"
+},
+"hint": {
+"en": "Scroll or pinch to zoom, drag to pan, hover a road for details",
+"ar": "التمرير أو القرص للتكبير، السحب للتحريك، مرّر المؤشر فوق طريق للتفاصيل"
+},
+"kmh": {
+"en": "km/h",
+"ar": "كم/س"
+},
+"km": {
+"en": "km",
+"ar": "كم"
+},
+"crashes": {
+"en": "crashes",
+"ar": "حادثاً"
+},
+"policeLabels": {
+"en": "Police labels",
+"ar": "أسماء الشرطة"
+},
+"extended": {
+"en": "Line continues through {r}; the police file all of it under {p}",
+"ar": "الخط يمتد عبر {r}؛ الشرطة تسجّله كله تحت {p}"
+},
+"tipAcc": {
+"en": "{a} injury accidents, {i} people injured",
+"ar": "{a} حادث إصابة، {i} مصاباً"
+},
+"tipMulti": {
+"en": "{p}% with two or more hurt",
+"ar": "{p}٪ منها بإصابتين أو أكثر"
+},
+"topCause": {
+"en": "Most common cause",
+"ar": "السبب الأكثر شيوعاً"
+},
+"tipCmp": {
+"en": "{b0} in {a}, {b1} in {b}",
+"ar": "{b0} في {a}، {b1} في {b}"
+},
+"tipInjCmp": {
+"en": "{n} injured in {b} ({d})",
+"ar": "{n} مصاباً في {b} ({d})"
+},
+"road": {
+"en": "Road",
+"ar": "الطريق"
+},
+"accidents": {
+"en": "Accidents",
+"ar": "الحوادث"
+},
+"injured": {
+"en": "Injured",
+"ar": "المصابون"
+},
+"multi": {
+"en": "2+ hurt",
+"ar": "إصابتان فأكثر"
+},
+"night": {
+"en": "At night",
+"ar": "ليلاً"
+},
+"limit": {
+"en": "Limit",
+"ar": "السرعة"
+},
+"perKm": {
+"en": "Per km a year",
+"ar": "لكل كم سنوياً"
+},
+"change": {
+"en": "Change",
+"ar": "التغيّر"
+},
+"injChange": {
+"en": "Injured change",
+"ar": "تغيّر المصابين"
+},
+"mostly": {
+"en": "Mostly",
+"ar": "غالباً"
+},
+"tblTitle": {
+"en": "Road ranking, {y}",
+"ar": "ترتيب الطرق، {y}"
+},
+"tblCmp": {
+"en": "Roads by change, {a} to {b}",
+"ar": "الطرق حسب التغيّر من {a} إلى {b}"
+},
+"tblNote": {
+"en": "Sort by any column. \"2+ hurt\" is the share of accidents with two or more people injured. Per-kilometre rates are shown only for roads longer than 5 km.",
+"ar": "رتّب حسب أي عمود. «إصابتان فأكثر» هي نسبة الحوادث التي أُصيب فيها شخصان أو أكثر. معدل الكيلومتر يُعرض فقط للطرق الأطول من 5 كم."
+},
+"tblNoteCmp": {
+"en": "Change in injury accidents between the two years. Small roads swing a lot year to year, so read the big movers.",
+"ar": "التغيّر في حوادث الإصابات بين السنتين. الطرق الصغيرة تتقلّب كثيراً من سنة لأخرى، فركّز على التغيّرات الكبيرة."
+},
+"yoyTitle": {
+"en": "Year over year, whole emirate",
+"ar": "سنة بعد سنة، الإمارة كلها"
+},
+"yoyNote": {
+"en": "Every injury accident in the police files, whether or not its street could be mapped.",
+"ar": "كل حوادث الإصابات في ملفات الشرطة، سواء أمكن وضع شارعها على الخريطة أم لا."
+},
+"clsTitle": {
+"en": "Faster roads, more people hurt per crash",
+"ar": "طرق أسرع، إصابات أكثر في الحادث الواحد"
+},
+"clsNote": {
+"en": "Share of injury accidents with two or more people injured, by road class. Matched roads, all years, classes with at least 40 accidents.",
+"ar": "نسبة حوادث الإصابات بشخصين أو أكثر حسب فئة الطريق. الطرق المطابقة، كل السنوات، الفئات التي فيها 40 حادثاً على الأقل."
+},
+"fcTitle": {
+"en": "Daily forecast for Abu Dhabi city, 2025",
+"ar": "التوقع اليومي لمدينة أبوظبي، 2025"
+},
+"fcNote": {
+"en": "All accident types. A gradient-boosting model trained on 2022 to 2024 using recent counts, weekday, Ramadan, public holidays and daily weather (Open-Meteo archive). Average error 42 a day (8%), against 55 for simply repeating last week; on rainy days the weather cut the error from 19 to 12.",
+"ar": "كل أنواع الحوادث. نموذج تعزيز متدرج مدرَّب على 2022–2024 باستخدام الأعداد الأخيرة ويوم الأسبوع ورمضان والعطل الرسمية والطقس اليومي (أرشيف Open-Meteo). متوسط الخطأ 42 حادثاً يومياً (8٪) مقابل 55 عند تكرار الأسبوع الماضي؛ وفي الأيام الممطرة خفّض الطقس الخطأ من 19 إلى 12."
+},
+"actual": {
+"en": "Actual",
+"ar": "الفعلي"
+},
+"model": {
+"en": "Model",
+"ar": "النموذج"
+},
+"months": {
+"en": "Jan|Mar|May|Jul|Sep|Nov",
+"ar": "يناير|مارس|مايو|يوليو|سبتمبر|نوفمبر"
+},
+"unmTitle": {
+"en": "What the map leaves out",
+"ar": "ما لا تُظهره الخريطة"
+},
+"unm1": {
+"en": "{n} injury accidents ({p}%) carry a street label that does not match an official road name in the same city. The largest groups:",
+"ar": "{n} حادث إصابة ({p}٪) يحمل اسم شارع لا يطابق اسم طريق رسمي في المدينة نفسها. أكبر المجموعات:"
+},
+"unm2": {
+"en": "Interior streets, \"undefined\", checkpoints and intersection codes need coordinates the police files do not publish. Mussafah Road and the airport roads have no equivalent in the official register, so they are held back rather than drawn in the wrong place. Country and emirate boundaries are from geoBoundaries; roads are from AD-SDI.",
+"ar": "الشوارع الداخلية و«لا يوجد تعريف» ونقاط التفتيش ورموز التقاطعات تحتاج إحداثيات لا تنشرها ملفات الشرطة. طريق المصفح وطرق المطار لا مقابل لها في السجل الرسمي، فتُركت بدل رسمها في مكان خاطئ. حدود الدولة والإمارات من geoBoundaries، والطرق من البنية التحتية للبيانات المكانية لأبوظبي."
+},
+"modeCount": {
+"en": "Counts",
+"ar": "الأعداد"
+},
+"modeResid": {
+"en": "Against trend",
+"ar": "مقابل الاتجاه"
+},
+"mapResid": {
+"en": "2025 against what the emirate-wide trend predicted for each road",
+"ar": "2025 مقارنة بما توقعه اتجاه الإمارة لكل طريق"
+},
+"legWorse": {
+"en": "Worse than trend (+15% or more)",
+"ar": "أسوأ من الاتجاه (+15٪ فأكثر)"
+},
+"legBetter": {
+"en": "Better than trend (−15% or more)",
+"ar": "أفضل من الاتجاه (−15٪ فأكثر)"
+},
+"legOnTrend": {
+"en": "On trend or too few to judge",
+"ar": "على الاتجاه أو أقل من أن يُحكم عليه"
+},
+"legArea": {
+"en": "District label, not a road",
+"ar": "اسم منطقة، ليس طريقاً"
+},
+"areaNote": {
+"en": "Police label names a district, not a road; drawn as a marker",
+"ar": "اسم المنطقة في سجل الشرطة وليس طريقاً؛ مرسوم كعلامة"
+},
+"residTip": {
+"en": "2025: {y} against {e} expected from the 2022–24 trend ({p}%)",
+"ar": "2025: {y} مقابل {e} متوقعة من اتجاه 2022–2024 ({p}٪)"
+},
+"wcTitle": {
+"en": "What changed, 2022 to 2025",
+"ar": "ما الذي تغيّر من 2022 إلى 2025"
+},
+"wcNote": {
+"en": "Injury accidents across all police records, by what the officer recorded as the cause and the collision type. Totals rose 35%; the causes did not rise evenly, and that is where the signal is.",
+"ar": "حوادث الإصابات في كل سجلات الشرطة حسب السبب ونوع التصادم كما سجّله الضابط. الإجمالي ارتفع 35٪، لكن الأسباب لم ترتفع بالتساوي، وهنا تكمن الإشارة."
+},
+"wcCauses": {
+"en": "Causes, biggest increases first",
+"ar": "الأسباب، الأكثر زيادة أولاً"
+},
+"wcTypes": {
+"en": "Collision types",
+"ar": "أنواع التصادم"
+},
+"wcRed": {
+"en": "Where red-light running grew",
+"ar": "أين زاد تجاوز الإشارة الحمراء"
+},
+"wcRedNote": {
+"en": "Injury accidents with a red light or red arrow recorded as the cause, by matched road. Three times as many emirate-wide; these junction roads carry most of it.",
+"ar": "حوادث الإصابات التي سُجّل سببها تجاوز الإشارة الحمراء أو سهمها، حسب الطريق المطابق. تضاعفت ثلاث مرات على مستوى الإمارة، وهذه الطرق تحمل معظمها."
+},
+"wcLabel": {
+"en": "Trend 2022→25",
+"ar": "الاتجاه 2022←25"
+},
+"wcGrowth": {
+"en": "Change",
+"ar": "التغيّر"
+}
+},
+"regions": {
+"Abu Dhabi": {
+"en": "Abu Dhabi",
+"ar": "أبوظبي"
+},
+"Al Ain": {
+"en": "Al Ain",
+"ar": "العين"
+},
+"Al Dhafra": {
+"en": "Al Dhafra",
+"ar": "الظفرة"
+}
+},
+"views": {
+"UAE": {
+"en": "UAE",
+"ar": "الإمارات"
+},
+"Abu Dhabi Emirate": {
+"en": "Abu Dhabi Emirate",
+"ar": "إمارة أبوظبي"
+},
+"Abu Dhabi city": {
+"en": "Abu Dhabi city",
+"ar": "مدينة أبوظبي"
+},
+"Al Ain": {
+"en": "Al Ain",
+"ar": "العين"
+},
+"Al Dhafra": {
+"en": "Al Dhafra",
+"ar": "الظفرة"
+}
+},
+"cls": {
+"Freeway": {
+"en": "freeway",
+"ar": "طريق سريع"
+},
+"Rural Expressway": {
+"en": "rural expressway",
+"ar": "طريق سريع ريفي"
+},
+"Expressway": {
+"en": "expressway",
+"ar": "طريق سريع حضري"
+},
+"Major Arterial": {
+"en": "major arterial",
+"ar": "شرياني رئيسي"
+},
+"Minor Arterial": {
+"en": "minor arterial",
+"ar": "شرياني فرعي"
+},
+"Major Collector": {
+"en": "major collector",
+"ar": "تجميعي رئيسي"
+},
+"Minor Collector": {
+"en": "minor collector",
+"ar": "تجميعي فرعي"
+},
+"Major Local": {
+"en": "major local",
+"ar": "محلي رئيسي"
+},
+"Minor Local": {
+"en": "minor local",
+"ar": "محلي فرعي"
+},
+"Gravel/Sandy": {
+"en": "gravel or sand",
+"ar": "ترابي"
+}
+},
+"places": [
+[
+"Abu Dhabi",
+"أبوظبي",
+54.37,
+24.47,
+1
+],
+[
+"Al Ain",
+"العين",
+55.76,
+24.21,
+1
+],
+[
+"Dubai",
+"دبي",
+55.27,
+25.2,
+1
+],
+[
+"Sharjah",
+"الشارقة",
+55.39,
+25.36,
+1
+],
+[
+"Ras Al Khaimah",
+"رأس الخيمة",
+55.95,
+25.79,
+1
+],
+[
+"Fujairah",
+"الفجيرة",
+56.33,
+25.12,
+1
+],
+[
+"Ajman",
+"عجمان",
+55.44,
+25.41,
+2
+],
+[
+"Umm Al Quwain",
+"أم القيوين",
+55.55,
+25.56,
+2
+],
+[
+"Madinat Zayed",
+"مدينة زايد",
+53.7,
+23.65,
+1
+],
+[
+"Ruwais",
+"الرويس",
+52.73,
+24.11,
+1
+],
+[
+"Al Sila",
+"السلع",
+51.75,
+24.05,
+1
+],
+[
+"Ghayathi",
+"غياثي",
+52.81,
+23.84,
+2
+],
+[
+"Liwa (Mezaira'a)",
+"ليوا (مزيرعة)",
+53.78,
+23.13,
+1
+],
+[
+"Sweihan",
+"سويحان",
+55.33,
+24.47,
+2
+],
+[
+"Al Mirfa",
+"المرفأ",
+53.47,
+24.11,
+2
+],
+[
+"Khalifa City",
+"مدينة خليفة",
+54.6,
+24.42,
+3
+],
+[
+"Mussafah",
+"المصفح",
+54.5,
+24.36,
+3
+],
+[
+"Baniyas",
+"بني ياس",
+54.65,
+24.3,
+3
+],
+[
+"Al Shahama",
+"الشهامة",
+54.68,
+24.53,
+3
+],
+[
+"Al Wathba",
+"الوثبة",
+54.7,
+24.21,
+3
+],
+[
+"Yas Island",
+"جزيرة ياس",
+54.6,
+24.49,
+3
+],
+[
+"Al Khazna",
+"الخزنة",
+55.14,
+24.17,
+2
+],
+[
+"Al Wagan",
+"الوقن",
+55.56,
+23.64,
+2
+],
+[
+"Delma Island",
+"جزيرة دلما",
+52.33,
+24.5,
+2
+],
+[
+"Sir Bani Yas",
+"صير بني ياس",
+52.6,
+24.3,
+2
+],
+[
+"Bu Hasa",
+"بوحصا",
+53.0,
+23.5,
+2
+],
+[
+"Al Hayer",
+"الهير",
+55.78,
+24.5,
+3
+],
+[
+"Al Qua'a",
+"القوع",
+55.64,
+23.49,
+2
+],
+[
+"Hatta",
+"حتا",
+56.13,
+24.8,
+2
+],
+[
+"Kalba",
+"كلباء",
+56.35,
+25.07,
+2
+],
+[
+"Khor Fakkan",
+"خورفكان",
+56.35,
+25.34,
+2
+],
+[
+"Al Dhaid",
+"الذيد",
+55.88,
+25.29,
+2
+]
+],
+"roads": {
+"دوار الجبل": "Al Jabal Roundabout",
+"دوار الديوان": "Al Dewan Roundabout",
+"دوار حديقة الحيوانات": "Zoo Roundabout",
+"دوار مكتبة زايد": "Zayed Central Library Roundabout",
+"شارع أبو عبيدة بن الجراح": "Abu Obaida Ibn Al Jarrah Street",
+"شارع البلدية": "Al Baladiya Street",
+"شارع الجامعة": "University Street",
+"شارع الخليج العربي": "Arabian Gulf Street",
+"شارع الرحبة": "Al Rahbah Street",
+"شارع الشوامخ": "Al Shawamekh Street",
+"شارع الشيخ خليفة بن زايد": "Sheikh Khalifa Bin Zayed Street",
+"شارع الشيخ خليفة بن زايد آل نهيان": "Sheikh Khalifa Bin Zayed Al Nahyan Street (E12)",
+"شارع الشيخ راشد بن سعيد": "Sheikh Rashid Bin Saeed Street",
+"شارع الشيخ زايد بن سلطان": "Sheikh Zayed Bin Sultan Street (E10)",
+"شارع الشيخ محمد بن راشد آل مكتوم": "Sheikh Mohamed Bin Rashid Al Maktoum Street",
+"شارع الطوية": "Al Tiwayyah Street",
+"شارع العشوش": "Al 'Ishoush Street",
+"شارع العَدلَة": "Al 'Adlah Street",
+"شارع الفلاح": "Al Falah Street",
+"شارع الكرامة": "Al Karamah Street",
+"شارع الكورنيش": "Corniche Street",
+"شارع المدينة": "Al Madina Street",
+"شارع المطار": "Airport Road",
+"شارع الميناء": "Al Mina Street",
+"شارع بني ياس": "Bani Yas Street",
+"شارع تُوَام": "Tuwam Street",
+"شارع جبل حفيت": "Jabal Hafeet Street",
+"شارع حمدان بن زايد الأول": "Hamdan Bin Zayed The First Street",
+"شارع حمدان بن محمد": "Hamdan Bin Mohammed Street",
+"شارع خالد بن الوليد": "Khaled Bin Al Waleed Street",
+"شارع خالد بن سلطان": "Khalid Bin Sultan Street",
+"شارع خليفة المبارك": "Khalifa Al Mubarak Street",
+"شارع خليفة بن زايد": "Khalifa Bin Zayed Street",
+"شارع خليفة بن زايد الاول": "Khalifa Bin Zayed The First Street",
+"شارع خليفة بن شخبوط": "Khalifa Bin Shakhbout Street",
+"شارع خَطْم الشِّكْلَة": "Khatm Al Shiklah Street",
+"شارع زايد الأول": "Zayed Al Awwal Street",
+"شارع زايد بن سلطان": "Zayed Bin Sultan Street",
+"شارع سعيد بن شخبوط": "Saeed Bin Shakhbout Street",
+"شارع سلطان بن زايد الأول": "Sultan Bin Zayed Al Awwal Street",
+"شارع شخبوط بن سلطان": "Shakhboot Bin Sultan Street",
+"شارع طحنون بن زايد الأول": "Tahnoun Bin Zayed The First Street",
+"شارع على بن أبى طالب": "Ali Bin Abi Talib Street",
+"شارع عمر بن الخطاب": "Omar Bin Al Khattab Street",
+"شارع عَشَارِج": "Asharij Street",
+"شارع غياثي": "Ghiyathi Street (E15)",
+"شارع قصر البحر": "Qasr Al Bahr Street",
+"شارع محمد بن خليفة": "Mohammed Bin Khalifa Street",
+"شارع محمد بن زايد الأول": "Mohammed Bin Zayed The First Street",
+"شارع محمد خلف المزروعي": "Mohammed Khalaf Al Mazrouei Street",
+"شارع نهيان الأول": "Nahyan Al Awwal Street",
+"شارع هزاع بن زايد الأول": "Hazza Bin Zayed The First Street",
+"شارع هزاع بن سلطان": "Hazza Bin Sultan Street",
+"طريق أم الزمول": "Um Al Zumoul Road (E95)",
+"طريق أم غافة": "Um Ghafah Road",
+"طريق الروضة": "Al Rawdah Road (E30 truck road)",
+"طريق الشيخ خليفة بن زايد الدولي": "Sheikh Khalifa Bin Zayed International Road (E11)",
+"طريق الشيخ محمد بن راشد آل مكتوم": "Sheikh Mohammed Bin Rashid Al Maktoum Road (E311)",
+"طريق الشيخ مكتوم بن راشد": "Sheikh Maktoum Bin Rashid Road (E11)",
+"طريق الشيخة سلامة بنت بطي": "Sheikha Salama Bint Butti Road (E45)",
+"طريق العين": "Al Ain Road (E22)",
+"طريق حبشان": "Habshan Road",
+"طريق حميم": "Hameem Road (E65)",
+"طريق سويحان": "Sweihan Road (E20)",
+"طريق طحنون بن محمد آل نهيان": "Tahnoun Bin Mohammed Al Nahyan Road (E66)",
+"طريق طريق رزين": "Razeen Road",
+"طريق محمد الفلاحي الياسي": "Mohamed Al Falahi Al Yasi Road",
+"طريق ناهل": "Nahil Road",
+"شارع الريم": "Al Reem Street"
+},
+"types": {
+"صدم جانبي": "side collision",
+"صدم خلفي": "rear-end collision",
+"صدم جسم ثابت خارج الطريق": "hit fixed object off road",
+"أخرى": "other",
+"صدم عمودي": "right-angle collision",
+"صدم متتالي": "chain collision",
+"صدم جسم ثابت في الطريق": "hit fixed object on road",
+"تدهور": "rollover",
+"صدم متقابل": "head-on collision",
+"صدم جسم غير ثابت في الطريق": "hit movable object on road",
+"دهس إنسان": "pedestrian run over",
+"صدم حيوان": "hit animal",
+"صدم جسم غير ثابت خارج الطريق": "hit movable object off road",
+"صدم إثناء الدوران": "collision while turning",
+"سقوط": "fall",
+"غير معروف": "unknown",
+"صدم غير متحرك": "hit stationary vehicle",
+"انفصال مقطورة": "trailer detached",
+"إحتراق": "fire"
+},
+"causes": {
+"الاهمال وعدم الانتباه": "negligence and inattention",
+"الرجوع للخلف بدون انتباه": "reversing carelessly",
+"عيوب أخرى": "other faults",
+"عدم الإلتزام بخط السير الالزامي": "not keeping to lane",
+"عدم إفساح الطريق / عدم إعطاء الألوية": "failing to give way",
+"الإنحراف المفاجئ": "sudden swerve",
+"عدم ترك مسافة كافية": "not keeping a safe distance",
+"الرجوع للخلف دون التأكد من خلو الطريق": "reversing without checking the road is clear",
+"عدم التقيد بالاشارات المرورية": "ignoring traffic signs",
+"دخول طريق رئيسي دون التأكد من خلوه": "entering a main road without checking it is clear",
+"الانشغال عن الطريق أثناء قيادة المركبة بأي صورة كانت": "distracted driving",
+"عدم تأمين ثبات المركبة أثناء وقوفها": "vehicle not secured when parked",
+"التجاوز في مكان ممنوع فيه التجاوز": "overtaking where prohibited",
+"إنفجار إطار": "tyre burst",
+"تجاوز الإشارة الضوئية الحمراء": "running a red light",
+"السير عكس الإتجاه": "driving against traffic",
+"قيادة المركبة تحت تأثيرالكحول": "driving under the influence of alcohol",
+"التعب والنعاس": "fatigue and drowsiness",
+"تجاوز الإشارة الضوئية الحمراء -- اشارة السهم": "running a red arrow signal",
+"السرعة دون مراعاة ظروف الطريق": "speed unsuited to road conditions",
+"عدم تثبيت الحمولة أو بروزها": "unsecured or protruding load",
+"عيوب في المركبة": "vehicle defect",
+"عدم إعطاء الاولوية لعبور المشاة": "not giving way to pedestrians",
+"تطايرعوارض بالطريق": "debris on the road",
+"عيوب في الطريق": "road defect",
+"عدم تقدير مستعملي الطريق": "misjudging other road users",
+"القيادة بدون رخصة قيادة إطلاقا": "driving without any licence",
+"العواصف الرملية": "sandstorm",
+"الانشغال عن الطريق أثناء قيادة المركبة باستعمال الهاتف": "using a phone while driving",
+"عدم الالمام بالقيادة": "inexperienced driving",
+"اللامبالاة": "recklessness",
+"الأمطار الغزيرة": "heavy rain",
+"تساقط الثلوج والبرد والامطار الغزيرة": "hail and heavy rain",
+"الدخول في مكان ممنوع": "entering a prohibited area",
+"الوقوف المفاجئ": "sudden stop",
+"إنحجاب الرؤية": "obstructed visibility",
+"عدم صلاحية الاطارات اثناء السير": "unfit tyres",
+"التجاوز من اليمين أواليساردون حذر": "careless overtaking left or right",
+"وهج الشمس": "sun glare"
+}
+}

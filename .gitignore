@@ -1,0 +1,5 @@
+data/extracted/
+data/extracted/
+out/*.parquet
+__pycache__/
+*.bak

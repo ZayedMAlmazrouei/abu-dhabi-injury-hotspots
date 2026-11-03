@@ -1,0 +1,31 @@
+{
+  "daily_forecast": [
+    {
+      "region": "abu_dhabi",
+      "mean_daily": 507.6,
+      "MAE": 41.5,
+      "MAPE": 8.0,
+      "naive_lag7_MAE": 54.7
+    },
+    {
+      "region": "al_ain",
+      "mean_daily": 151.9,
+      "MAE": 15.9,
+      "MAPE": 10.4,
+      "naive_lag7_MAE": 21.4
+    },
+    {
+      "region": "al_dhafra",
+      "mean_daily": 27.2,
+      "MAE": 5.8,
+      "MAPE": 21.0,
+      "naive_lag7_MAE": 7.2
+    }
+  ],
+  "injury_severity": {
+    "auc": 0.653,
+    "n_train": 4082,
+    "n_test": 1715,
+    "base_rate": 0.252
+  }
+}
